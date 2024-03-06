@@ -1,0 +1,40 @@
+/* Header and Footer Styles */
+.header, .footer {
+  text-align: center;
+  background-color: lightblue;
+  padding: 10px;
+}
+
+/* Form Styles */
+.student-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Form Fieldset Styles */
+.form-fieldset {
+  background-color: lavender;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* Input Text Fields Styles */
+.form-fieldset input[type="text"] {
+  margin: 5px 0;
+  padding: 5px;
+  text-align: center;
+  width: 300px; 
+}
+
+/* Submit Button Styles */
+.submit-button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor:pointer;
+}
