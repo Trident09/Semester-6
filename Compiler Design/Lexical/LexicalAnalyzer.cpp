@@ -1,71 +1,131 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <regex>
-#include <unordered_set>
-#include <algorithm>
+#include <cctype>
 
-using namespace std;
-
-vector<string> analyzeTokens(string code, unordered_set<string>& usedTokens, vector<string>& identifiers, vector<string>& operators, vector<string>& punctuators) {
-    vector<string> tokens;
-
-    regex idPattern(R"(\b[a-zA-Z_][a-zA-Z0-9_]*\b)");
-    regex opPattern(R"(\+|\-|\*|\/)");
-    regex punctPattern(R"(\(|\))");
-    regex pattern(R"([a-zA-Z_][a-zA-Z0-9_]*|\d+|\+|\-|\*|\/|\(|\))");
-
-    sregex_iterator it(code.begin(), code.end(), pattern);
-    sregex_iterator end;
-
-    for (; it != end; ++it) {
-        string token = it->str();
-        tokens.push_back(token);
-        usedTokens.insert(token);
-
-        if (regex_match(token, idPattern)) {
-            identifiers.push_back(token);
-        } else if (regex_match(token, opPattern)) {
-            operators.push_back(token);
-        } else if (regex_match(token, punctPattern)) {
-            punctuators.push_back(token);
-        }
-    }
-    return tokens;
+bool isOperator(char c)
+{
+   return c == '+' || c == '-' || c == '*' || c == '/';
 }
-int main() {
 
-    string code;
-    cout << "Enter the code to analyze: ";
-    getline(cin, code);
-    unordered_set<string> usedTokens;
-    vector<string> identifiers;
-    vector<string> operators;
-    vector<string> punctuators;
+bool isSeparator(char c)
+{
+   return c == ';' || c == ',' || c == '(' || c == ')';
+}
 
-    vector<string> tokens = analyzeTokens(code, usedTokens, identifiers, operators, punctuators);
+int main()
+{
+   std::string expression;
+   std::cout << "Enter the expression: ";
+   std::getline(std::cin, expression);
 
-    cout << "\nTotal number of tokens: " << tokens.size() << endl;
+   std::string token;
+   int tokenCount = 0;
+   bool inString = false;
+   bool inComment = false;
 
-    cout << "Used tokens: ";
-    for (const string& token : usedTokens) {
-        cout << token << " ";
-    }
-    
-    cout << "\nIdentifiers: ";
-    for (const string& identifier : identifiers) {
-        cout << identifier << " ";
-    }
-    
-    cout << "\nOperators: ";
-    for (const string& op : operators) {
-        cout << op << " ";
-    }
-    
-    cout << "\nPunctuators: ";
-    for (const string& punctuator : punctuators) {
-        cout << punctuator << " ";
-    }
+   for (size_t i = 0; i < expression.length(); ++i)
+   {
+      char c = expression[i];
 
-    return 0;
+      if (inComment)
+      {
+         if (c == '*' && i + 1 < expression.length() && expression[i + 1] == '/')
+         {
+            // End of block comment
+            inComment = false;
+            i++; // Skip the closing '/'
+         }
+         continue; // Ignore everything inside comments
+      }
+
+      if (inString)
+      {
+         token += c;
+         if (c == '"')
+         {
+            // End of string literal
+            inString = false;
+            std::cout << "'" << token << "' (string)\n";
+            tokenCount++;
+            token.clear();
+         }
+         continue;
+      }
+
+      if (c == '"')
+      {
+         if (!token.empty())
+         {
+            std::cout << "'" << token << "' (identifier)\n";
+            tokenCount++;
+            token.clear();
+         }
+         inString = true;
+         token += c;
+         continue;
+      }
+
+      if (isSeparator(c))
+      {
+         if (!token.empty())
+         {
+            std::cout << "'" << token << "' (identifier)\n";
+            tokenCount++;
+            token.clear();
+         }
+         std::cout << "'" << c << "' (separator)\n";
+         tokenCount++; // Count separators
+         continue;
+      }
+
+      if (isOperator(c))
+      {
+         if (!token.empty())
+         {
+            std::cout << "'" << token << "' (identifier)\n";
+            tokenCount++;
+            token.clear();
+         }
+         if (c == '+' && i + 1 < expression.length() && expression[i + 1] == '+')
+         {
+            std::cout << "'++' (increment operator)\n";
+            i++; // Skip next character
+         }
+         else
+         {
+            std::cout << "'" << c << "' (operator)\n";
+         }
+         tokenCount++;
+         continue;
+      }
+
+      if (c == '/' && i + 1 < expression.length() && expression[i + 1] == '*')
+      {
+         // Start of block comment
+         inComment = true;
+         i++; // Skip the opening '*'
+         continue;
+      }
+
+      if (!std::isspace(c))
+      {
+         token += c;
+      }
+      else if (!token.empty())
+      {
+         std::cout << "'" << token << "' (identifier)\n";
+         tokenCount++;
+         token.clear();
+      }
+   }
+
+   if (!token.empty())
+   {
+      std::cout << "'" << token << "' (identifier)\n";
+      tokenCount++;
+   }
+
+   std::cout << "The number of tokens = " << tokenCount << std::endl;
+
+   return 0;
 }
