@@ -12,7 +12,7 @@ Write a lex program to recognise the following :
 3. set of all strings with 3 consecutive 2s. //done
 4. set of all strings such that the 10th symbol from right end is 1. //done
 5. the set of all 4 digit numbers whose sum is 9.
-6. the set of all 4 digit numbers whose individual digits are in ascending order from left to right. //done
+6. the set of all 4 digit numbers whose individual digits are in ascending order from left to right. //done \
 Implement the same using JFlex also.
 
 
