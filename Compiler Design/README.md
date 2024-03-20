@@ -15,6 +15,13 @@ Write a lex program to recognise the following :
 6. the set of all 4 digit numbers whose individual digits are in ascending order from left to right. //done \
 Implement the same using JFlex also.
 
+20 March 2024
+
+1. Write a Lex program to recongnise floating point numbers.
+2. Write a lex program to count number of words in a text file.
+3. Write a lex program to identify keywords and convert it into upper-case.
+4. Write a lex program to count number of vowels and consonants.
+5. Write a lex to count the number of identifiers, keywords and digits.
 
 
 
