@@ -1,7 +1,7 @@
 Compiler Design
 
 
-Write a program to design a lexical analysier to recognise any 5 tokens.  //done
+Write a program to design a lexical analyser to recognise any 5 tokens.  //done
 printf("hello world , %d");
 
 
@@ -17,14 +17,17 @@ Implement the same using JFlex also.
 
 20 March 2024
 
-1. Write a lex program to count number of words in a text file.
+1. Write a lex program to count number of words in a text file. //done
 2. Write a lex program to identify keywords and convert it into upper-case.
-3. Write a lex program to count number of vowels and consonants.
-4. Write a lex to count the number of identifiers, keywords and digits.
+3. Write a lex program to count number of vowels and consonants. //done
+4. Write a lex to count the number of identifiers, keywords and digits. //done
+
+- Write a lex program to generate all strings of length seven strings containing 3 consecutive 2 //done
+- Write a lex program to generate all strings till length 5 ending with 11. //done
 
 
 
-Write a Lex program to recongnise floating point numbers.
+Write a Lex program to recognise floating point numbers.
 
 
 
