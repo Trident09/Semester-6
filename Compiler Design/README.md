@@ -19,7 +19,7 @@ Write a lex program to recognise the following :
 20 March 2024
 
 1. Write a lex program to count number of words in a text file. //done
-2. Write a lex program to identify keywords and convert it into upper-case.
+2. Write a lex program to identify keywords and convert it into upper-case. //done
 3. Write a lex program to count number of vowels and consonants. //done
 4. Write a lex to count the number of identifiers, keywords and digits. //done
 

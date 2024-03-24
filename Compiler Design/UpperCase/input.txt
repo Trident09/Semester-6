@@ -1,0 +1,7 @@
+int x = 10;
+float y = 3.14;
+if (x > y) {
+    printf("x is greater");
+} else {
+    printf("y is greater");
+}
