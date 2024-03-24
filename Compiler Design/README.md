@@ -7,14 +7,14 @@ printf("hello world , %d");
 
 Case study about any language compiler.
 Write a lex program to recognise the following :
-1. tokens over the alphabet (0-9).
+1. tokens over the alphabet (0-9). -- same as above //done
 2. set of all string ending with 11. //done
 3. set of all strings with 3 consecutive 2s. //done
 4. set of all strings such that the 10th symbol from right end is 1. //done
-5. the set of all 4 digit numbers whose sum is 9.
+5. the set of all 4 digit numbers whose sum is 9. //done
 6. the set of all 4 digit numbers whose individual digits are in ascending order from left to right. //done
-7. the set of all floating point numbers . \
-Implement the same using JFlex also.
+7. the set of all floating point numbers . //done
+- Implement the same using JFlex also. if possible.
 
 20 March 2024
 
