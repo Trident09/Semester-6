@@ -34,7 +34,7 @@ Write a Lex program to recognise floating point numbers.
 
 for running the lex programs 
 ```
-lex filename.l
+flex filename.l
 gcc -o filename lex.yy.c -lfl
 ./filename
 ```
