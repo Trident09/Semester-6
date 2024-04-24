@@ -46,9 +46,9 @@ gcc -o filename lex.yy.c -lfl
         - ε = {a,b}
         - Design DFA for the following : 
 
-            - L1 = aⁿbᵐ | n,m ≥ 0
+            -  L1 = aⁿbᵐ | n,m ≥ 0
             -  L2 = { w : | w | mod3 = 0 }
-            - L3 = aⁿb | n ≥ 0
+            -  L3 = aⁿb | n ≥ 0
             -  L4 = ab* (a+b)*    -     All strings with prefix ab 
         - design dfa for a given regex.
     - Construct a NFA that accepts set of strings with : 
