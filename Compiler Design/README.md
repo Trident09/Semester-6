@@ -39,3 +39,22 @@ flex filename.l
 gcc -o filename lex.yy.c -lfl
 ./filename
 ```
+
+24 March 2024
+1. Using JFLAP, implement :
+    - desing a dfa , nfa , for any general language.
+        - ε = {a,b}
+        - Design DFA for the following : 
+
+            - L1 = aⁿbᵐ | n,m ≥ 0
+            -  L2 = { w : | w | mod3 = 0 }
+            - L3 = aⁿb | n ≥ 0
+            -  L4 = ab* (a+b)*    -     All strings with prefix ab 
+        - design dfa for a given regex.
+    - Construct a NFA that accepts set of strings with : 
+        - Exactly one 'a'
+        - Atleast one 'a'
+        - No more than 3 'a'
+        - Atleast 1 'a' and 2 'b'
+        - Exactly 2 'a' and more than 2 'b'
+2. write a cpp program to find the first and follow for all the non terminal present in the gramar.
