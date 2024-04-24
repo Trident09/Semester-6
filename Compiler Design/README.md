@@ -45,11 +45,12 @@ gcc -o filename lex.yy.c -lfl
     - desing a dfa , nfa , for any general language.
         - ε = {a,b}
         - Design DFA for the following : 
-
             -  L1 = aⁿbᵐ | n,m ≥ 0
             -  L2 = { w : | w | mod3 = 0 }
             -  L3 = aⁿb | n ≥ 0
             -  L4 = ab* (a+b)*    -     All strings with prefix ab 
+        - ε = {0,1}
+            - Construct a DFA over the string which does not contain substring 001.
         - design dfa for a given regex.
     - Construct a NFA that accepts set of strings with : 
         - Exactly one 'a'
