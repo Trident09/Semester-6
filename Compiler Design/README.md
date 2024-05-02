@@ -59,3 +59,11 @@ gcc -o filename lex.yy.c -lfl
         - Atleast 1 'a' and 2 'b'
         - Exactly 2 'a' and more than 2 'b'
 2. write a cpp program to find the first and follow for all the non terminal present in the gramar.
+
+01-05-2024
+### Construct PDA for the following languages :
+1. L = {aⁿbᵐ | n,m ≥ 0}
+2. L = {aⁿbᵐ | n,m ≥ n+2}
+3. L = {aⁿbⁿ | n ≥ 1}
+4. L = {aⁿbᵐ | n = m OR n = m+2}
+5. Show that L = W | W ∈ {a,b}* such that na(W) = nb(W) is a deterministic context free language.
