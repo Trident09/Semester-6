@@ -1,0 +1,16 @@
+<servlet>
+    <servlet-name>ServletConfigDemo</servlet-name>
+    <servlet-class>com.example.ServletConfigDemo</servlet-class>
+    <init-param>
+        <param-name>adminEmail</param-name>
+        <param-value>rupam@rupam.com</param-value>
+    </init-param>
+    <init-param>
+        <param-name>welcomeMessage</param-name>
+        <param-value>Hello World</param-value>
+    </init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ServletConfigDemo</servlet-name>
+    <url-pattern>/configDemo</url-pattern>
+</servlet-mapping>

@@ -1,0 +1,8 @@
+<filter>
+    <filter-name>LoggingFilter</filter-name>
+    <filter-class>LoggingFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>LoggingFilter</filter-name>
+    <url-pattern>/*</url-pattern> <!-- Applies filter to all URL patterns -->
+</filter-mapping>
