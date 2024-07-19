@@ -4,12 +4,27 @@
 
 bool isOperator(char c)
 {
-   return c == '+' || c == '-' || c == '*' || c == '/';
+   return c == '+' || c == '-' || c == '*' || c == '/' || c == '=';
 }
 
 bool isSeparator(char c)
 {
    return c == ';' || c == ',' || c == '(' || c == ')';
+}
+
+bool isKeyword(const std::string& str)
+{
+   static const char* keywords[] = {
+       "int", "float", "double", "char", "void", "if", "else", "while", "for", "return"
+   };
+   static const int keywordCount = sizeof(keywords) / sizeof(keywords[0]);
+   
+   for (int i = 0; i < keywordCount; ++i) {
+       if (str == keywords[i]) {
+           return true;
+       }
+   }
+   return false;
 }
 
 int main()
@@ -26,24 +41,20 @@ int main()
    for (size_t i = 0; i < expression.length(); ++i)
    {
       char c = expression[i];
-
       if (inComment)
       {
          if (c == '*' && i + 1 < expression.length() && expression[i + 1] == '/')
          {
-            // End of block comment
             inComment = false;
-            i++; // Skip the closing '/'
+            i++;
          }
-         continue; // Ignore everything inside comments
+         continue;
       }
-
       if (inString)
       {
          token += c;
          if (c == '"')
          {
-            // End of string literal
             inString = false;
             std::cout << "'" << token << "' (string)\n";
             tokenCount++;
@@ -51,12 +62,16 @@ int main()
          }
          continue;
       }
-
       if (c == '"')
       {
          if (!token.empty())
          {
-            std::cout << "'" << token << "' (identifier)\n";
+            if (isKeyword(token))
+               std::cout << "'" << token << "' (keyword)\n";
+            else if (std::isdigit(token[0]))
+               std::cout << "'" << token << "' (number)\n";
+            else
+               std::cout << "'" << token << "' (identifier)\n";
             tokenCount++;
             token.clear();
          }
@@ -64,68 +79,72 @@ int main()
          token += c;
          continue;
       }
-
       if (isSeparator(c))
       {
          if (!token.empty())
          {
-            std::cout << "'" << token << "' (identifier)\n";
+            if (isKeyword(token))
+               std::cout << "'" << token << "' (keyword)\n";
+            else if (std::isdigit(token[0]))
+               std::cout << "'" << token << "' (number)\n";
+            else
+               std::cout << "'" << token << "' (identifier)\n";
             tokenCount++;
             token.clear();
          }
          std::cout << "'" << c << "' (separator)\n";
-         tokenCount++; // Count separators
+         tokenCount++;
          continue;
       }
-
       if (isOperator(c))
       {
          if (!token.empty())
          {
-            std::cout << "'" << token << "' (identifier)\n";
+            if (isKeyword(token))
+               std::cout << "'" << token << "' (keyword)\n";
+            else if (std::isdigit(token[0]))
+               std::cout << "'" << token << "' (number)\n";
+            else
+               std::cout << "'" << token << "' (identifier)\n";
             tokenCount++;
             token.clear();
          }
-         if (c == '+' && i + 1 < expression.length() && expression[i + 1] == '+')
-         {
-            std::cout << "'++' (increment operator)\n";
-            i++; // Skip next character
-         }
-         else
-         {
-            std::cout << "'" << c << "' (operator)\n";
-         }
+         std::cout << "'" << c << "' (operator)\n";
          tokenCount++;
          continue;
       }
-
       if (c == '/' && i + 1 < expression.length() && expression[i + 1] == '*')
       {
-         // Start of block comment
          inComment = true;
-         i++; // Skip the opening '*'
+         i++;
          continue;
       }
-
       if (!std::isspace(c))
       {
          token += c;
       }
       else if (!token.empty())
       {
-         std::cout << "'" << token << "' (identifier)\n";
+         if (isKeyword(token))
+            std::cout << "'" << token << "' (keyword)\n";
+         else if (std::isdigit(token[0]))
+            std::cout << "'" << token << "' (number)\n";
+         else
+            std::cout << "'" << token << "' (identifier)\n";
          tokenCount++;
          token.clear();
       }
    }
-
    if (!token.empty())
    {
-      std::cout << "'" << token << "' (identifier)\n";
+      if (isKeyword(token))
+         std::cout << "'" << token << "' (keyword)\n";
+      else if (std::isdigit(token[0]))
+         std::cout << "'" << token << "' (number)\n";
+      else
+         std::cout << "'" << token << "' (identifier)\n";
       tokenCount++;
    }
-
    std::cout << "The number of tokens = " << tokenCount << std::endl;
-
    return 0;
 }

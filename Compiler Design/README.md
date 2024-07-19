@@ -67,3 +67,11 @@ gcc -o filename lex.yy.c -lfl
 3. L = {aⁿbⁿ | n ≥ 1}
 4. L = {aⁿbᵐ | n = m OR n = m+2}
 5. Show that L = W | W ∈ {a,b}* such that na(W) = nb(W) is a deterministic context free language.
+
+
+### Make a following parsers in any language :
+
+1. LR(0) parser
+2. SLR(1) parser
+3. LALR(1) parser
+4. CLR(1) parser
